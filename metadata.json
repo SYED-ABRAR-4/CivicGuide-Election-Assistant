@@ -1,0 +1,6 @@
+{
+  "name": "CivicGuide: Election Assistant",
+  "description": "An interactive guide to help users understand election processes, timelines, and voting steps with an AI assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

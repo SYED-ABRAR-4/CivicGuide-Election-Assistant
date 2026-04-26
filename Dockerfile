@@ -1,8 +1,15 @@
-# 1. Build the Vite application
-FROM node:18-alpine AS builder
+# 1. Build the Vite application using Node 22 (required by Tailwind v4 & Vite React plugin)
+FROM node:22-alpine AS builder
 WORKDIR /app
-COPY package*.json ./
+
+# Only copy package.json (NOT package-lock.json) 
+# This completely bypasses the NPM "optional dependencies" and native binding bug on Alpine Linux
+COPY package.json ./
+
+# Install dependencies from scratch for the Linux environment
 RUN npm install
+
+# Copy the rest of the code and build
 COPY . .
 RUN npm run build
 
